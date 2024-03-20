@@ -22,7 +22,7 @@ export class CustomObjectMetadata extends BaseObjectMetadata {
     description: 'Name',
     type: FieldMetadataType.TEXT,
     icon: 'IconAbc',
-    defaultValue: { value: 'Untitled' },
+    defaultValue: { value: "'Untitled'" },
   })
   name: string;
 
