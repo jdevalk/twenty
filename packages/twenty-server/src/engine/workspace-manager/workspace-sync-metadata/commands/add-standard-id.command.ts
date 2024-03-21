@@ -50,6 +50,7 @@ export class AddStandardIdCommand extends CommandRunner {
           {
             IS_BLOCKLIST_ENABLED: true,
             IS_CALENDAR_ENABLED: true,
+            IS_FULL_SYNC_V2_ENABLED: false,
           },
         );
       const standardFieldMetadataCollection = this.standardFieldFactory.create(
@@ -61,6 +62,7 @@ export class AddStandardIdCommand extends CommandRunner {
         {
           IS_BLOCKLIST_ENABLED: true,
           IS_CALENDAR_ENABLED: true,
+          IS_FULL_SYNC_V2_ENABLED: false,
         },
       );
 

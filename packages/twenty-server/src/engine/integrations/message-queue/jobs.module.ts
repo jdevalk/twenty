@@ -45,6 +45,9 @@ import { ConnectedAccountObjectMetadata } from 'src/modules/connected-account/st
 import { MessageParticipantObjectMetadata } from 'src/modules/messaging/standard-objects/message-participant.object-metadata';
 import { MessageChannelObjectMetadata } from 'src/modules/messaging/standard-objects/message-channel.object-metadata';
 import { GmailFullSynV2Module } from 'src/modules/messaging/services/gmail-full-sync-v2/gmail-full-sync.v2.module';
+import { GmailFetchMessageContentFromCacheJob } from 'src/modules/messaging/jobs/gmail-fetch-message-content-from-cache.job';
+import { GmailFetchMessageContentFromCacheModule } from 'src/modules/messaging/services/gmail-fetch-message-content-from-cache/gmail-fetch-message-content-from-cache.module';
+import { FetchAllMessagesFromCacheCron } from 'src/modules/messaging/commands/crons/fetch-all-messages-from-cache.cron';
 
 @Module({
   imports: [
@@ -76,6 +79,7 @@ import { GmailFullSynV2Module } from 'src/modules/messaging/services/gmail-full-
       MessageChannelObjectMetadata,
     ]),
     GmailFullSynV2Module,
+    GmailFetchMessageContentFromCacheModule,
   ],
   providers: [
     {
@@ -131,6 +135,14 @@ import { GmailFullSynV2Module } from 'src/modules/messaging/services/gmail-full-
     {
       provide: RecordPositionBackfillJob.name,
       useClass: RecordPositionBackfillJob,
+    },
+    {
+      provide: GmailFetchMessageContentFromCacheJob.name,
+      useClass: GmailFetchMessageContentFromCacheJob,
+    },
+    {
+      provide: FetchAllMessagesFromCacheCron.name,
+      useClass: FetchAllMessagesFromCacheCron,
     },
   ],
 })
